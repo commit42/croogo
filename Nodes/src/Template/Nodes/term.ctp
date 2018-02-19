@@ -7,7 +7,7 @@ endif;
 if (isset($type)):
     $titles[] = $type->title;
 endif;
-$this->assign('title', implode (' | ', $titles));
+$this->assign('title', implode(' | ', $titles));
 
 ?>
 <div class="nodes">
@@ -34,5 +34,5 @@ $this->assign('title', implode (' | ', $titles));
         endforeach;
     ?>
 
-    <div class="paging"><?= $this->Paginator->numbers() ?></div>
+    <div class="paging"><?= $this->Paginator->numbers(["url" => ["term" => $term->slug, "type" => $type->alias]]) ?></div>
 </div>
