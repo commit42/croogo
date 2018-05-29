@@ -58,6 +58,17 @@ class TermsTable extends CroogoTable
         $validator
             ->notBlank('title', __d('croogo', 'The title cannot be empty'))
             ->notBlank('slug', __d('croogo', 'The slug cannot be empty'));
+            ->add(
+                'slug',
+                [
+                'unique' => [
+                    'rule' => 'validateUnique',
+                    'provider' => 'table',
+                    'message' => __d('croogo', 'The slug is already taken')
+                    ]
+                ]
+            );
+
         return $validator;
     }
 
