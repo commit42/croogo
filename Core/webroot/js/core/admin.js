@@ -275,7 +275,9 @@ Admin.dateTimeFields = function(datePickers) {
     var date = null;
 
     if (picker.data("timestamp") && picker.data("timezone")) {
+      var timezone = picker.data("timezone");
       date = moment(picker.data("timestamp") * 1000);
+      date = date.tz(timezone);
     }
 
     var sDate = date ? date : picker.val();
