@@ -273,6 +273,11 @@ Admin.dateTimeFields = function(datePickers) {
   datePickers.each(function() {
     var picker = $(this);
     var date = null;
+
+    if (picker.data("timestamp") && picker.data("timezone")) {
+      date = moment(picker.data("timestamp") * 1000);
+    }
+
     var sDate = date ? date : picker.val();
 
     picker.on("dp.change", function(e) {
